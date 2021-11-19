@@ -61,6 +61,13 @@ def loans_ages():
 
     plt.show()
     
+    success_rate = {
+        '0-24' : ages_good['0-24']/(ages_good['0-24']+ages_bad['0-24'])*100,
+        '24-35' : ages_good['24-35']/(ages_good['24-35']+ages_bad['24-35'])*100,
+        '36-64' : ages_good['36-64']/(ages_good['36-64']+ages_bad['36-64'])*100,
+        '64+' : ages_good['64+']/(ages_good['64+']+ages_bad['64+'])*100
+    }
+    print(success_rate,non_clients)
 
 def loans_regions():
     region_good = {
@@ -130,7 +137,17 @@ def loans_regions():
         except:
             non_clients+=1
 
-    print(region_good,region_bad,non_clients)
+    success_rate = {
+        'Prague' : region_good['Prague']/(region_good['Prague']+region_bad['Prague'])*100,
+        'central Bohemia':region_good['central Bohemia']/(region_good['central Bohemia']+region_bad['central Bohemia'])*100,
+        'south Bohemia':region_good['south Bohemia']/(region_good['south Bohemia']+region_bad['south Bohemia'])*100,
+        'west Bohemia':region_good['west Bohemia']/(region_good['west Bohemia']+region_bad['west Bohemia'])*100,
+        'north Bohemia':region_good['north Bohemia']/(region_good['north Bohemia']+region_bad['north Bohemia'])*100,
+        'east Bohemia':region_good['east Bohemia']/(region_good['east Bohemia']+region_bad['east Bohemia'])*100,
+        'south Moravia':region_good['south Moravia']/(region_good['south Moravia']+region_bad['south Moravia'])*100,
+        'north Moravia':region_good['north Moravia']/(region_good['north Moravia']+region_bad['north Moravia'])*100
+    }
+    print(success_rate,non_clients)
 
 loans_ages()
 loans_regions()
