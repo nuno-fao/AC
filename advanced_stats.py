@@ -51,9 +51,9 @@ def loans_ages():
     fig, ax = plt.subplots()
     labels= ages_good.keys()
 
-    ax.bar(labels, ages_good.values(), 0.35, yerr=0, label='aproved')
+    ax.bar(labels, ages_good.values(), 0.35, yerr=0, label='successfull')
     ax.bar(labels, ages_bad.values(), 0.35, yerr=0, bottom=0,
-        label='not aproved')
+        label='unsuccessfull')
 
     ax.set_ylabel('Clients')
     ax.set_title('Sucess/insucess by age')
@@ -148,6 +148,19 @@ def loans_regions():
         'north Moravia':region_good['north Moravia']/(region_good['north Moravia']+region_bad['north Moravia'])*100
     }
     print(success_rate,non_clients)
+    fig, ax = plt.subplots()
+    labels= region_good.keys()
+
+    ax.bar(labels, region_good.values(), 0.35, yerr=0, label='sucessfull')
+    ax.bar(labels, region_bad.values(), 0.35, yerr=0, bottom=0,
+        label='unsuccessfull')
+
+    ax.set_ylabel('Clients')
+    ax.set_title('Sucess/insucess by region')
+    ax.legend()
+    plt.xticks(rotation=90)
+
+    plt.show()
 
 loans_ages()
 loans_regions()
