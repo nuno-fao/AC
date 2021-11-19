@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def loans_ages():
     ages_good = {
@@ -45,6 +46,21 @@ def loans_ages():
             non_clients+=1
 
     print(ages_good,ages_bad,non_clients)
+    
+    
+    fig, ax = plt.subplots()
+    labels= ages_good.keys()
+
+    ax.bar(labels, ages_good.values(), 0.35, yerr=0, label='aproved')
+    ax.bar(labels, ages_bad.values(), 0.35, yerr=0, bottom=0,
+        label='not aproved')
+
+    ax.set_ylabel('Clients')
+    ax.set_title('Sucess/insucess by age')
+    ax.legend()
+
+    plt.show()
+    
 
 def loans_regions():
     region_good = {
