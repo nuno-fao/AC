@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def loans_ages():
     ages_good = {
@@ -44,6 +45,22 @@ def loans_ages():
         except:
             non_clients+=1
 
+    print(ages_good,ages_bad,non_clients)
+    
+    
+    fig, ax = plt.subplots()
+    labels= ages_good.keys()
+
+    ax.bar(labels, ages_good.values(), 0.35, yerr=0, label='successfull')
+    ax.bar(labels, ages_bad.values(), 0.35, yerr=0, bottom=0,
+        label='unsuccessfull')
+
+    ax.set_ylabel('Clients')
+    ax.set_title('Sucess/insucess by age')
+    ax.legend()
+
+    plt.show()
+    
     success_rate = {
         '0-24' : ages_good['0-24']/(ages_good['0-24']+ages_bad['0-24'])*100,
         '24-35' : ages_good['24-35']/(ages_good['24-35']+ages_bad['24-35'])*100,
@@ -131,6 +148,19 @@ def loans_regions():
         'north Moravia':region_good['north Moravia']/(region_good['north Moravia']+region_bad['north Moravia'])*100
     }
     print(success_rate,non_clients)
+    fig, ax = plt.subplots()
+    labels= region_good.keys()
+
+    ax.bar(labels, region_good.values(), 0.35, yerr=0, label='sucessfull')
+    ax.bar(labels, region_bad.values(), 0.35, yerr=0, bottom=0,
+        label='unsuccessfull')
+
+    ax.set_ylabel('Clients')
+    ax.set_title('Sucess/insucess by region')
+    ax.legend()
+    plt.xticks(rotation=90)
+
+    plt.show()
 
 loans_ages()
 loans_regions()
