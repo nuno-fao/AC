@@ -1,0 +1,22 @@
+Cliente:
+	Apagar a coluna de birth_number dos clientes
+	Adicionar 1 coluna de género 'M'/'F' e uma de data de nascimento
+Accounts:
+	Meter a data no formato yy-mm-dd
+	Simplificar a frequencia
+Cards:
+	Mudar formato da data
+Disposition:
+	Simplificar type: Owner-0, Disponent-1
+	Apagar coluna disp_id porque é inutil, primarykey é o conjunto, conta-cliente
+District:
+	Nada mudado
+Transaction:
+	Simplificar operation
+	Quando operation é null meter o valor do k_symbol
+	Apagar colunas k_symbol, bank e account dado que a informação não será muito relevante
+	Na coluna type, transformar "withdrawal in cash" em "withdrawal" dado que a distinção não é relevante
+	Em withdrawals colocar o valor negativo  para simplificar operações futuras
+	Mudar formato da data
+Loan:
+	Mudar formato da data
