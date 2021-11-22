@@ -158,7 +158,7 @@ def loans_regions():
     ax.set_ylabel('Clients')
     ax.set_title('Sucess/insucess by region')
     ax.legend()
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=45)
 
     plt.show()
 
