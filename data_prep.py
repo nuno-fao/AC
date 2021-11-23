@@ -51,7 +51,6 @@ def process_cards(original):
 
 def process_disposition():
     df_disp = pd.read_csv("original_files/disp.csv",sep=';')
-    df_disp = df_disp.drop('disp_id',axis=1)
     df_disp.loc[df_disp['type'] == 'OWNER', 'type'] = 0
     df_disp.loc[df_disp['type'] == 'DISPONENT', 'type'] = 1
     df_disp.to_csv('processed_files/disp_processed.csv', index=False)
@@ -103,9 +102,9 @@ def process_loan(original):
 # process_accounts()
 # process_cards("card_train")
 # process_cards("card_test")
-# process_disposition()
+process_disposition()
 # process_district()
-process_transaction("trans_train")
-process_transaction("trans_test")
+# process_transaction("trans_train")
+# process_transaction("trans_test")
 # process_loan("loan_train")
 # process_loan("loan_test")
