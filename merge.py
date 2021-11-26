@@ -96,7 +96,12 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
 
     merged = merged.merge(transaction_stats(trans),on='account_id',how='left')
 
+    
     merged = merged.sort_values(by=['client_id'])
+    
+    merged = merged.fillna("none")
+
+    merged = merged.drop(['account_id','client_id','client_district_name','client_district_region','account_district_name','account_district_region'],axis=1)
 
     merged.to_csv(final_name,index=False)
 
