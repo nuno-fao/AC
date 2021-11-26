@@ -14,11 +14,11 @@ def process_clients():
         else:
             gender.append('M')
 
-        date = birthdate[0:2] + "-"+ str(month)+"-" + birthdate[4:]
+        date = 99 - int(birthdate[0:2])
         birthdays.append(date)
 
     df_clients = df_clients.drop('birth_number', axis=1)
-    df_clients['birthdate']=birthdays
+    df_clients['age']=birthdays
     df_clients['gender']=gender
 
     df_clients.to_csv('processed_files/client_processed.csv', index=False)
@@ -28,7 +28,7 @@ def process_accounts():
     df_accounts = df_accounts.astype({'date':str})
     for i, row in df_accounts.iterrows():
         date = row['date']
-        df_accounts.at[i,'date'] = date[0:2] + "-" + date[2:4] + "-" + date[4:]
+        df_accounts.at[i,'date'] = 99 - int(date[0:2])
         frequency = row['frequency']
 
         if frequency == 'monthly issuance':
@@ -82,7 +82,6 @@ def process_transaction(original):
 
         if row['type'] == "withdrawal in cash":
             df_trans.at[i,'type'] = 'withdrawal'
-            df_trans.at[i,'amount'] *=-1
 
     df_trans = df_trans.drop(['k_symbol','bank','account'], axis=1)        
     df_trans.to_csv('processed_files/' + original + "_processed.csv" , index=False)
@@ -91,20 +90,25 @@ def process_loan(original):
     df_loans = pd.read_csv("original_files/"+original+".csv",sep=';')
 
     df_loans = df_loans.astype({'date':str})
+    loan_years = []
+    loan_months = []
     for i, row in df_loans.iterrows():
         date = row['date']
-        df_loans.at[i,'date'] = date[0:2] + "-" + date[2:4] + "-" + date[4:]
+        loan_years.append( date[0:2])
+        loan_months.append( date[2:4])
+    df_loans['loan_year']=loan_years
+    df_loans['loan_month']=loan_months
 
     df_loans.to_csv('processed_files/' + original + "_processed.csv" , index=False)
 
 
-# process_clients()
-# process_accounts()
+process_clients()
+process_accounts()
 # process_cards("card_train")
 # process_cards("card_test")
-process_disposition()
+# process_disposition()
 # process_district()
 # process_transaction("trans_train")
 # process_transaction("trans_test")
-# process_loan("loan_train")
-# process_loan("loan_test")
+process_loan("loan_train")
+process_loan("loan_test")
