@@ -92,7 +92,7 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
         "no. of commited crimes '96 ": "account_district_96_crimes",
         })
 
-    merged = merged.drop(['client_district','disp_id','disp_type','account_district','loan_id','client_district_code','account_district_code','card_id','issued'],axis=1)
+    merged = merged.drop(['client_district','disp_id','disp_type','account_district','client_district_code','account_district_code','card_id','issued'],axis=1)
 
     merged = merged.merge(transaction_stats(trans),on='account_id',how='left')
 
