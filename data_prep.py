@@ -9,10 +9,10 @@ def process_clients():
         birthdate = str(row['birth_number'])
         month=int(birthdate[2:4])
         if(month>12):
-            gender.append('F')
+            gender.append('2')
             month=month-50
         else:
-            gender.append('M')
+            gender.append('1')
 
         date = 99 - int(birthdate[0:2])
         birthdays.append(date)
@@ -32,21 +32,30 @@ def process_accounts():
         frequency = row['frequency']
 
         if frequency == 'monthly issuance':
-            df_accounts.at[i,'frequency'] = 'M'
+            df_accounts.at[i,'frequency'] = '1'
         elif frequency == 'weekly issuance':
-            df_accounts.at[i,'frequency'] = 'W'
+            df_accounts.at[i,'frequency'] = '2'
         elif frequency == 'issuance after transaction':
-            df_accounts.at[i,'frequency'] = 'AT'
+            df_accounts.at[i,'frequency'] = '3'
 
     df_accounts.to_csv('processed_files/account_processed.csv', index=False)
 
 def process_cards(original):
     df_cards = pd.read_csv("original_files/"+original+".csv",sep=';')
     df_cards = df_cards.astype({'issued':str})
+    
     for i, row in df_cards.iterrows():
         date = row['issued']
         df_cards.at[i,'issued'] = date[0:2] + "-" + date[2:4] + "-" + date[4:]
 
+        if row['type']=='classic':
+            df_cards.at[i,'type'] = '1'
+        elif row['type']=='gold':
+            df_cards.at[i,'type'] = '2'
+        elif row['type']=='junior':
+            df_cards.at[i,'type'] = '3'
+
+    df_cards = df_cards.astype({'type':int})
     df_cards.to_csv('processed_files/' + original + "_processed.csv" , index=False)
 
 def process_disposition():
@@ -68,17 +77,17 @@ def process_transaction(original):
         df_trans.at[i,'date'] = date[0:2] + "-" + date[2:4] + "-" + date[4:]
         
         if row['operation'] == "credit in cash":
-            df_trans.at[i,'operation'] = 'A'
+            df_trans.at[i,'operation'] = '1'
         elif row['operation'] == "collection from another bank":
-            df_trans.at[i,'operation'] = 'B'
+            df_trans.at[i,'operation'] = '2'
         elif row['operation'] == "withdrawal in cash":
-            df_trans.at[i,'operation'] = 'C'
+            df_trans.at[i,'operation'] = '3'
         elif row['operation'] == "remittance to another bank":
-            df_trans.at[i,'operation'] = 'D'
+            df_trans.at[i,'operation'] = '4'
         elif row['operation'] == "credit card withdrawal":
-            df_trans.at[i,'operation'] = 'E'
+            df_trans.at[i,'operation'] = '5'
         else:
-            df_trans.at[i,'operation'] = 'F'
+            df_trans.at[i,'operation'] = '6'
 
         if row['type'] == "withdrawal in cash":
             df_trans.at[i,'type'] = 'withdrawal'
@@ -102,13 +111,13 @@ def process_loan(original):
     df_loans.to_csv('processed_files/' + original + "_processed.csv" , index=False)
 
 
-process_clients()
-process_accounts()
-# process_cards("card_train")
-# process_cards("card_test")
+# process_clients()
+# process_accounts()
+process_cards("card_train")
+process_cards("card_test")
 # process_disposition()
 # process_district()
 # process_transaction("trans_train")
 # process_transaction("trans_test")
-process_loan("loan_train")
-process_loan("loan_test")
+# process_loan("loan_train")
+# process_loan("loan_test")

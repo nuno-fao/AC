@@ -40,6 +40,10 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
 
     merged = merged.merge(cards,on='disp_id',how="left")
 
+    merged['type_y'].fillna(value='0',inplace=True)
+
+    merged = merged.astype({'type_y':int})
+
     merged = merged.rename(columns={'type_x':'disp_type','type_y':'card_type','district_id_x' : 'client_district', 'district_id_y':'account_district','date':'account_age'})
 
     merged = merged.merge(loans, on='account_id')
@@ -101,7 +105,7 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
     
     merged = merged.fillna("none")
 
-    merged = merged.drop(['account_id','client_id','client_district_name','client_district_region','account_district_name','account_district_region'],axis=1)
+    merged = merged.drop(['account_district_95_unemp', 'client_district_95_crimes','account_district_95_crimes','client_district_95_unemp','account_id','client_id','client_district_name','client_district_region','account_district_name','account_district_region'],axis=1)
 
     merged.to_csv(final_name,index=False)
 
