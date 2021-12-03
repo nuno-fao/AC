@@ -112,7 +112,7 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
     
     merged = merged.fillna("none")
 
-    merged = merged.drop(['account_district_95_unemp', 'client_district_95_crimes','account_district_95_crimes','client_district_95_unemp','account_id','client_id','client_district_name','client_district_region','account_district_name','account_district_region'],axis=1)
+    merged = merged.drop(['account_id','client_id','client_district_name','client_district_region','account_district_name','account_district_region'],axis=1)
 
     merged.to_csv(final_name,index=False)
 
