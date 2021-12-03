@@ -12,25 +12,32 @@ df_trans = pd.read_csv("processed_files/trans_train_processed.csv",sep=',')
 df_trans_test = pd.read_csv("processed_files/trans_test_processed.csv",sep=',')
 
 def transaction_stats(df_trans):
+    
     merged=df_trans[['account_id']]
     merged=merged.drop_duplicates(subset=['account_id'])
 
-    actions=df_trans[['account_id', 'type']].groupby('account_id').count()
-    balancemean=df_trans[['account_id', 'balance']].groupby('account_id').mean().round(1)
+    credit_count=df_trans.groupby('account_id')['type'].apply(lambda x: (x=='credit').sum()).reset_index(name='credit count')
+    withdrawal_count=df_trans.groupby('account_id')['type'].apply(lambda x: (x=='withdrawal').sum()).reset_index(name='withdrawl count')
+    amount_std=df_trans.groupby('account_id')['amount'].std().reset_index(name='amount std')
+    #actions=df_trans['account_id',df_trans['type']=='withdrawl'].groupby['account_id'].count()
+    balancemean=df_trans[['account_id', 'balance']].groupby('account_id').mean()
     balancemin=df_trans[['account_id', 'balance']].groupby('account_id').min()
     balancemax=df_trans[['account_id', 'balance']].groupby('account_id').max()
 
-    meantrans = df_trans[['account_id', 'amount']].groupby('account_id').mean().round(0)
-    mintrans= df_trans[['account_id', 'amount']].groupby('account_id').min()
+    meantrans = df_trans[['account_id', 'amount']].groupby('account_id').mean()
     maxtrans = df_trans[['account_id', 'amount']].groupby('account_id').max()
-    merged=merged.merge(actions,on='account_id')
+    mintrans= df_trans[['account_id', 'amount']].groupby('account_id').min()
+    merged=merged.merge(credit_count,on='account_id')
+    merged=merged.merge(withdrawal_count,on='account_id')
     merged=merged.merge(balancemean,on='account_id')
     merged=merged.merge(balancemin,on='account_id')
     merged=merged.merge(balancemax,on='account_id')
     merged = merged.merge(meantrans,on='account_id')
     merged = merged.merge(maxtrans,on='account_id')
     merged=merged.merge(mintrans,on='account_id')
+    merged=merged.merge(amount_std.round(),on='account_id')
     merged = merged.rename(columns={'type':'number of actions','amount_x':'transaction mean','amount_y':'transaction max','amount' : 'transaction min', 'balance_x': 'balance mean','balance_y':'balance min','balance':'balance max'})
+
     return merged
 
 def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name):
