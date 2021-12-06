@@ -108,7 +108,7 @@
       <operator activated="true" class="concurrency:optimize_parameters_grid" compatibility="8.2.000" expanded="true" height="124" name="Optimize Parameters (Grid)" origin="GENERATED_TEMPLATE" width="90" x="514" y="442">
         <list key="parameters">
           <parameter key="Random Forest (2).number_of_trees" value="[50 ;500;10;linear]"/>
-          <parameter key="SMOTE Upsampling.upsampling_size" value="[2;100;4;quadratic]"/>
+          <parameter key="SMOTE Upsampling.upsampling_size" value="[0;40;10;quadratic]"/>
         </list>
         <parameter key="error_handling" value="fail on error"/>
         <parameter key="log_performance" value="true"/>
@@ -129,7 +129,7 @@
                 <parameter key="number_of_neighbours" value="3"/>
                 <parameter key="normalize" value="false"/>
                 <parameter key="equalize_classes" value="false"/>
-                <parameter key="upsampling_size" value="100"/>
+                <parameter key="upsampling_size" value="40"/>
                 <parameter key="auto_detect_minority_class" value="false"/>
                 <parameter key="minority_class" value="false"/>
                 <parameter key="round_integers" value="false"/>
