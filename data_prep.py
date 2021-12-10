@@ -103,6 +103,7 @@ def process_loan(original):
     loan_months = []
     for i, row in df_loans.iterrows():
         date = row['date']
+        df_loans.at[i,'date'] = date[0:2] + "-" + date[2:4] + "-" + date[4:]
         loan_years.append( date[0:2])
         loan_months.append( date[2:4])
     df_loans['loan_year']=loan_years
@@ -113,11 +114,11 @@ def process_loan(original):
 
 # process_clients()
 # process_accounts()
-process_cards("card_train")
-process_cards("card_test")
+# process_cards("card_train")
+# process_cards("card_test")
 # process_disposition()
 # process_district()
 # process_transaction("trans_train")
 # process_transaction("trans_test")
-# process_loan("loan_train")
-# process_loan("loan_test")
+process_loan("loan_train")
+process_loan("loan_test") 
