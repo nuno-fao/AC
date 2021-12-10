@@ -81,7 +81,7 @@ def transaction_stats(df_trans,df_loan):
     # operation on DATE 
 
     DATE_df=df_loan.merge(df_trans,how='left',on='account_id')
-
+    
     DATEaux=DATE_df.loc[DATE_df['date']<DATE_df['loan_date']]
     #balanceBEFOREloan=DATEaux.groupby('account_id')['date'].max()
     DATEaux.sort_values(['account_id', 'date']).drop_duplicates('date', keep='last')
@@ -203,7 +203,7 @@ def merge_datasets(clients,cards,accounts,disps,districts,loans,trans,final_name
 
     merged = merged.drop(['client_district','disp_id','disp_type','account_district','client_district_code','account_district_code','card_id','issued'],axis=1)
 
-    merged = merged.merge(transaction_stats(trans),on='account_id',how='left')
+    merged = merged.merge(transaction_stats(trans,loans),on='account_id',how='left')
 
     
     merged = merged.sort_values(by=['client_id'])
