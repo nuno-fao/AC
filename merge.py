@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 df_client = pd.read_csv("processed_files/client_processed.csv",sep=',')
 df_card = pd.read_csv("processed_files/card_train_processed.csv",sep=',')
@@ -11,7 +12,7 @@ df_loan_test = pd.read_csv("processed_files/loan_test_processed.csv",sep=',')
 df_trans = pd.read_csv("processed_files/trans_train_processed.csv",sep=',')
 df_trans_test = pd.read_csv("processed_files/trans_test_processed.csv",sep=',')
 
-def transaction_stats(df_trans):
+def transaction_stats(df_trans,df_loan):
     
     merged=df_trans[['account_id']]
     merged=merged.drop_duplicates(subset=['account_id'])
@@ -76,6 +77,20 @@ def transaction_stats(df_trans):
     operationF_amountmean = operationF_df.groupby('account_id')['amount'].mean().round().reset_index(name='OPERATION F amount mean')
     operationF_count = operationF_df.groupby('account_id')['account_id'].count().reset_index(name='OPERATION F count')
 
+
+    # operation on DATE 
+
+    DATE_df=df_loan.merge(df_trans,how='left',on='account_id')
+
+    DATEaux=DATE_df.loc[DATE_df['date']<DATE_df['loan_date']]
+    #balanceBEFOREloan=DATEaux.groupby('account_id')['date'].max()
+    DATEaux.sort_values(['account_id', 'date']).drop_duplicates('date', keep='last')
+    balanceBEFOREloan=DATEaux[['account_id','balance','date']]
+    DATEaux['ratio']=np.where(DATEaux['loan_amount']<1,DATEaux['loan_amount'],DATEaux['balance']/DATEaux['loan_amount'])
+
+    finalDATE=DATEaux.drop_duplicates('account_id',keep='last')
+    finalDATE2=finalDATE[['account_id','ratio']]
+
     # merge on CREDIT
 
     merged=merged.merge(credit_count,how='left',on='account_id')
@@ -118,6 +133,7 @@ def transaction_stats(df_trans):
     merged=merged.merge(operationF_amountmean,how='left',on='account_id')
     merged=merged.merge(operationF_count,how='left',on='account_id')
 
+    merged=merged.merge(finalDATE2,how='left',on='account_id')
 
     merged=merged.fillna(0)
     return merged
