@@ -1,4 +1,4 @@
-loan_id,account_id,loan_date,loan_amount,loan_duration,loan_payments,status_loan,loan_year,loan_month
+loan_id,account_id,date,amount,duration,payments,status,loan_year,loan_month
 5895,4473,97-01-03,93960,60,1566,,97,01
 7122,10365,97-01-04,260640,36,7240,,97,01
 6173,5724,97-01-08,232560,48,4845,,97,01
