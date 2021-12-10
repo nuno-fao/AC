@@ -128,24 +128,15 @@
           <parameter key="loan_id" value="id"/>
         </list>
       </operator>
-      <operator activated="true" class="split_data" compatibility="9.10.001" expanded="true" height="103" name="Split Data (2)" width="90" x="313" y="340">
-        <enumeration key="partitions">
-          <parameter key="ratio" value="0.3"/>
-          <parameter key="ratio" value="0.7"/>
-        </enumeration>
-        <parameter key="sampling_type" value="automatic"/>
-        <parameter key="use_local_random_seed" value="true"/>
-        <parameter key="local_random_seed" value="1992"/>
-      </operator>
       <operator activated="true" class="optimize_selection" compatibility="9.10.001" expanded="true" height="103" name="Optimize Selection" width="90" x="514" y="187">
         <parameter key="selection_direction" value="forward"/>
         <parameter key="limit_generations_without_improval" value="true"/>
         <parameter key="generations_without_improval" value="1"/>
         <parameter key="limit_number_of_generations" value="false"/>
         <parameter key="keep_best" value="1"/>
-        <parameter key="maximum_number_of_generations" value="10"/>
-        <parameter key="normalize_weights" value="true"/>
-        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="maximum_number_of_generations" value="50"/>
+        <parameter key="normalize_weights" value="false"/>
+        <parameter key="use_local_random_seed" value="true"/>
         <parameter key="local_random_seed" value="1992"/>
         <parameter key="user_result_individual_selection" value="false"/>
         <parameter key="show_population_plotter" value="false"/>
@@ -156,8 +147,8 @@
         <process expanded="true">
           <operator activated="true" class="split_data" compatibility="9.10.001" expanded="true" height="103" name="Split Data" width="90" x="112" y="187">
             <enumeration key="partitions">
-              <parameter key="ratio" value="0.3"/>
-              <parameter key="ratio" value="0.7"/>
+              <parameter key="ratio" value="0.8"/>
+              <parameter key="ratio" value="0.2"/>
             </enumeration>
             <parameter key="sampling_type" value="automatic"/>
             <parameter key="use_local_random_seed" value="true"/>
@@ -210,26 +201,13 @@
           <portSpacing port="sink_performance" spacing="0"/>
         </process>
       </operator>
-      <operator activated="true" class="select_by_weights" compatibility="9.10.001" expanded="true" height="103" name="Select by Weights" width="90" x="648" y="340">
-        <parameter key="weight_relation" value="greater equals"/>
-        <parameter key="weight" value="1.0"/>
-        <parameter key="k" value="10"/>
-        <parameter key="p" value="0.5"/>
-        <parameter key="deselect_unknown" value="true"/>
-        <parameter key="use_absolute_weights" value="true"/>
-      </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Numerical to Binominal" to_port="example set input"/>
       <connect from_op="Numerical to Binominal" from_port="example set output" to_op="Set Role" to_port="example set input"/>
-      <connect from_op="Set Role" from_port="example set output" to_op="Split Data (2)" to_port="example set"/>
-      <connect from_op="Split Data (2)" from_port="partition 1" to_op="Optimize Selection" to_port="example set in"/>
-      <connect from_op="Split Data (2)" from_port="partition 2" to_op="Select by Weights" to_port="example set input"/>
-      <connect from_op="Optimize Selection" from_port="weights" to_op="Select by Weights" to_port="weights"/>
-      <connect from_op="Select by Weights" from_port="example set output" to_port="result 1"/>
-      <connect from_op="Select by Weights" from_port="weights" to_port="result 2"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Optimize Selection" to_port="example set in"/>
+      <connect from_op="Optimize Selection" from_port="weights" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
-      <portSpacing port="sink_result 3" spacing="0"/>
     </process>
   </operator>
 </process>
