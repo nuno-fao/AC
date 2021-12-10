@@ -90,7 +90,7 @@ def transaction_stats(df_trans,df_loan):
     DATEaux['ratio']=np.where(DATEaux['loan_amount']<1,DATEaux['loan_amount'],DATEaux['balance']/DATEaux['loan_amount'])
 
     finalDATE=DATEaux.drop_duplicates('account_id',keep='last')
-    finalDATE2=finalDATE[['account_id','ratio']]
+    finalDATE2=finalDATE[['account_id','ratio','balance']]
 
     # merge on CREDIT
 
