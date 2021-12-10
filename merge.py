@@ -16,6 +16,7 @@ def transaction_stats(df_trans,df_loan):
     
     merged=df_trans[['account_id']]
     merged=merged.drop_duplicates(subset=['account_id'])
+    df_loan=df_loan.rename(columns={'date': 'loan_date','amount':'loan_amount','duration':'loan_duration','payments':'loan_payments','status':'loan_status'})
 
 
     # operation on dataset with CREDIT
