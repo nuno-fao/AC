@@ -92,6 +92,8 @@ def transaction_stats(df_trans,df_loan):
     finalDATE=DATEaux.drop_duplicates('account_id',keep='last')
     finalDATE2=finalDATE[['account_id','ratio','balance']]
 
+    finalDATE2 = finalDATE2.rename(columns={'ratio': 'balance_to_loan_ratio', 'balance': 'balance_on_request'})
+
     # merge on CREDIT
 
     merged=merged.merge(credit_count,how='left',on='account_id')

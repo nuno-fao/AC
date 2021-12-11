@@ -41,7 +41,7 @@
           <parameter key="3" value="account_age.true.integer.attribute"/>
           <parameter key="4" value="card_type.true.integer.attribute"/>
           <parameter key="5" value="loan_id.true.integer.attribute"/>
-          <parameter key="6" value="loan_date.true.integer.attribute"/>
+          <parameter key="6" value="loan_date.true.polynominal.attribute"/>
           <parameter key="7" value="amount.true.integer.attribute"/>
           <parameter key="8" value="duration.true.integer.attribute"/>
           <parameter key="9" value="payments.true.integer.attribute"/>
@@ -102,6 +102,8 @@
           <parameter key="64" value="OPERATION E count.true.real.attribute"/>
           <parameter key="65" value="OPERATION F amount mean.true.real.attribute"/>
           <parameter key="66" value="OPERATION F count.true.real.attribute"/>
+          <parameter key="67" value="balance_to_loan_ratio.true.real.attribute"/>
+          <parameter key="68" value="balance_on_request.true.real.attribute"/>
         </list>
         <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
@@ -132,6 +134,7 @@
         <list key="parameters">
           <parameter key="Random Forest (2).number_of_trees" value="[50 ;500;10;linear]"/>
           <parameter key="SMOTE Upsampling.upsampling_size" value="[0;40;10;quadratic]"/>
+          <parameter key="SMOTE Upsampling.number_of_neighbours" value="[2;10;5;quadratic]"/>
         </list>
         <parameter key="error_handling" value="fail on error"/>
         <parameter key="log_performance" value="true"/>
@@ -255,7 +258,7 @@
         <parameter key="grouped_digits" value="false"/>
         <parameter key="grouping_character" value=","/>
         <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value="MMM d, yyyy h:mm:ss a z"/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
         <parameter key="first_row_as_names" value="true"/>
         <list key="annotations"/>
         <parameter key="time_zone" value="SYSTEM"/>
@@ -269,7 +272,7 @@
           <parameter key="3" value="account_age.true.integer.attribute"/>
           <parameter key="4" value="card_type.true.integer.attribute"/>
           <parameter key="5" value="loan_id.true.integer.attribute"/>
-          <parameter key="6" value="loan_date.true.integer.attribute"/>
+          <parameter key="6" value="loan_date.true.polynominal.attribute"/>
           <parameter key="7" value="amount.true.integer.attribute"/>
           <parameter key="8" value="duration.true.integer.attribute"/>
           <parameter key="9" value="payments.true.integer.attribute"/>
@@ -330,6 +333,8 @@
           <parameter key="64" value="OPERATION E count.true.real.attribute"/>
           <parameter key="65" value="OPERATION F amount mean.true.real.attribute"/>
           <parameter key="66" value="OPERATION F count.true.real.attribute"/>
+          <parameter key="67" value="balance_to_loan_ratio.true.real.attribute"/>
+          <parameter key="68" value="balance_on_request.true.real.attribute"/>
         </list>
         <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
