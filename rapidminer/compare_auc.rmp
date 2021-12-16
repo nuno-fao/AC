@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.10.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.4.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="Read CSV" width="90" x="112" y="34">
+        <parameter key="csv_file" value="C:\Users\olive\Desktop\AC\final_dataset.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="age.true.integer.attribute"/>
+          <parameter key="1" value="gender.true.integer.attribute"/>
+          <parameter key="2" value="frequency.true.integer.attribute"/>
+          <parameter key="3" value="account_age.true.integer.attribute"/>
+          <parameter key="4" value="card_type.true.integer.attribute"/>
+          <parameter key="5" value="loan_id.true.integer.attribute"/>
+          <parameter key="6" value="loan_date.true.date.attribute"/>
+          <parameter key="7" value="amount.true.integer.attribute"/>
+          <parameter key="8" value="duration.true.integer.attribute"/>
+          <parameter key="9" value="payments.true.integer.attribute"/>
+          <parameter key="10" value="status.true.integer.attribute"/>
+          <parameter key="11" value="loan_year.true.integer.attribute"/>
+          <parameter key="12" value="loan_month.true.integer.attribute"/>
+          <parameter key="13" value="client_district_habitants.true.integer.attribute"/>
+          <parameter key="14" value="client_district_mun_under_499.true.integer.attribute"/>
+          <parameter key="15" value="client_district_mun_under_1999.true.integer.attribute"/>
+          <parameter key="16" value="client_district_mun_under_9999.true.integer.attribute"/>
+          <parameter key="17" value="client_district_mun_higher_10000.true.integer.attribute"/>
+          <parameter key="18" value="client_district_cities.true.integer.attribute"/>
+          <parameter key="19" value="client_district_inhab_ration.true.real.attribute"/>
+          <parameter key="20" value="client_district_average_salary.true.integer.attribute"/>
+          <parameter key="21" value="client_district_95_unemp.true.real.attribute"/>
+          <parameter key="22" value="client_district_96_unemp.true.real.attribute"/>
+          <parameter key="23" value="client_district_entrepren.true.integer.attribute"/>
+          <parameter key="24" value="client_district_95_crimes.true.integer.attribute"/>
+          <parameter key="25" value="client_district_96_crimes.true.integer.attribute"/>
+          <parameter key="26" value="account_district_habitants.true.integer.attribute"/>
+          <parameter key="27" value="account_district_mun_under_499.true.integer.attribute"/>
+          <parameter key="28" value="account_district_mun_under_1999.true.integer.attribute"/>
+          <parameter key="29" value="account_district_mun_under_9999.true.integer.attribute"/>
+          <parameter key="30" value="account_district_mun_higher_10000.true.integer.attribute"/>
+          <parameter key="31" value="account_district_cities.true.integer.attribute"/>
+          <parameter key="32" value="account_district_inhab_ration.true.real.attribute"/>
+          <parameter key="33" value="account_district_average_salary.true.integer.attribute"/>
+          <parameter key="34" value="account_district_95_unemp.true.real.attribute"/>
+          <parameter key="35" value="account_district_96_unemp.true.real.attribute"/>
+          <parameter key="36" value="account_district_entrepren.true.integer.attribute"/>
+          <parameter key="37" value="account_district_95_crimes.true.integer.attribute"/>
+          <parameter key="38" value="account_district_96_crimes.true.integer.attribute"/>
+          <parameter key="39" value="credit count.true.integer.attribute"/>
+          <parameter key="40" value="credit balance mean.true.real.attribute"/>
+          <parameter key="41" value="credit balance min.true.real.attribute"/>
+          <parameter key="42" value="credit balance max.true.real.attribute"/>
+          <parameter key="43" value="credit amount mean.true.real.attribute"/>
+          <parameter key="44" value="credit amount min.true.real.attribute"/>
+          <parameter key="45" value="credit amount max.true.real.attribute"/>
+          <parameter key="46" value="credit amount std.true.real.attribute"/>
+          <parameter key="47" value="withdrawal count.true.real.attribute"/>
+          <parameter key="48" value="withdrawal balance mean.true.real.attribute"/>
+          <parameter key="49" value="withdrawal balance min.true.real.attribute"/>
+          <parameter key="50" value="withdrawal balance max.true.real.attribute"/>
+          <parameter key="51" value="withdrawal amount mean.true.real.attribute"/>
+          <parameter key="52" value="withdrawal amount min.true.real.attribute"/>
+          <parameter key="53" value="withdrawal amount max.true.real.attribute"/>
+          <parameter key="54" value="withdrawal amount std.true.real.attribute"/>
+          <parameter key="55" value="OPERATION A amount mean.true.real.attribute"/>
+          <parameter key="56" value="OPERATION A count.true.integer.attribute"/>
+          <parameter key="57" value="OPERATION B amount mean.true.real.attribute"/>
+          <parameter key="58" value="OPERATION B count.true.real.attribute"/>
+          <parameter key="59" value="OPERATION C amount mean.true.real.attribute"/>
+          <parameter key="60" value="OPERATION C count.true.real.attribute"/>
+          <parameter key="61" value="OPERATION D amount mean.true.real.attribute"/>
+          <parameter key="62" value="OPERATION D count.true.real.attribute"/>
+          <parameter key="63" value="OPERATION E amount mean.true.real.attribute"/>
+          <parameter key="64" value="OPERATION E count.true.real.attribute"/>
+          <parameter key="65" value="OPERATION F amount mean.true.real.attribute"/>
+          <parameter key="66" value="OPERATION F count.true.real.attribute"/>
+          <parameter key="67" value="balance_to_loan_ratio.true.real.attribute"/>
+          <parameter key="68" value="balance_on_request.true.real.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="numerical_to_binominal" compatibility="9.10.001" expanded="true" height="82" name="Numerical to Binominal" width="90" x="313" y="34">
+        <parameter key="attribute_filter_type" value="single"/>
+        <parameter key="attribute" value="status"/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="numeric"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="real"/>
+        <parameter key="block_type" value="value_series"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_series_end"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="min" value="-1.0"/>
+        <parameter key="max" value="0.0"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.10.001" expanded="true" height="82" name="Set Role" width="90" x="514" y="34">
+        <parameter key="attribute_name" value="loan_id"/>
+        <parameter key="target_role" value="id"/>
+        <list key="set_additional_roles">
+          <parameter key="status" value="label"/>
+        </list>
+      </operator>
+      <operator activated="true" class="compare_rocs" compatibility="9.10.001" expanded="true" height="82" name="Compare ROCs" width="90" x="715" y="34">
+        <parameter key="number_of_folds" value="10"/>
+        <parameter key="split_ratio" value="0.7"/>
+        <parameter key="sampling_type" value="stratified sampling"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="use_example_weights" value="true"/>
+        <parameter key="roc_bias" value="optimistic"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:parallel_random_forest" compatibility="9.4.000" expanded="true" height="103" name="Random Forest" width="90" x="313" y="136">
+            <parameter key="number_of_trees" value="320"/>
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="maximal_depth" value="10"/>
+            <parameter key="apply_pruning" value="false"/>
+            <parameter key="confidence" value="0.1"/>
+            <parameter key="apply_prepruning" value="false"/>
+            <parameter key="minimal_gain" value="0.01"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+            <parameter key="random_splits" value="false"/>
+            <parameter key="guess_subset_ratio" value="true"/>
+            <parameter key="subset_ratio" value="0.2"/>
+            <parameter key="voting_strategy" value="confidence vote"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="enable_parallel_execution" value="true"/>
+          </operator>
+          <operator activated="true" class="h2o:deep_learning" compatibility="9.10.001" expanded="true" height="103" name="Deep Learning" width="90" x="313" y="340">
+            <parameter key="activation" value="Rectifier"/>
+            <enumeration key="hidden_layer_sizes">
+              <parameter key="hidden_layer_sizes" value="50"/>
+              <parameter key="hidden_layer_sizes" value="50"/>
+            </enumeration>
+            <enumeration key="hidden_dropout_ratios"/>
+            <parameter key="reproducible_(uses_1_thread)" value="false"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="epochs" value="10.0"/>
+            <parameter key="compute_variable_importances" value="false"/>
+            <parameter key="train_samples_per_iteration" value="-2"/>
+            <parameter key="adaptive_rate" value="true"/>
+            <parameter key="epsilon" value="1.0E-8"/>
+            <parameter key="rho" value="0.99"/>
+            <parameter key="learning_rate" value="0.005"/>
+            <parameter key="learning_rate_annealing" value="1.0E-6"/>
+            <parameter key="learning_rate_decay" value="1.0"/>
+            <parameter key="momentum_start" value="0.0"/>
+            <parameter key="momentum_ramp" value="1000000.0"/>
+            <parameter key="momentum_stable" value="0.0"/>
+            <parameter key="nesterov_accelerated_gradient" value="true"/>
+            <parameter key="standardize" value="true"/>
+            <parameter key="L1" value="1.0E-5"/>
+            <parameter key="L2" value="0.0"/>
+            <parameter key="max_w2" value="10.0"/>
+            <parameter key="loss_function" value="Automatic"/>
+            <parameter key="distribution_function" value="AUTO"/>
+            <parameter key="early_stopping" value="false"/>
+            <parameter key="stopping_rounds" value="1"/>
+            <parameter key="stopping_metric" value="AUTO"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <parameter key="missing_values_handling" value="MeanImputation"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+            <list key="expert_parameters"/>
+            <list key="expert_parameters_"/>
+          </operator>
+          <operator activated="true" class="naive_bayes" compatibility="9.10.001" expanded="true" height="82" name="Naive Bayes" width="90" x="313" y="442">
+            <parameter key="laplace_correction" value="true"/>
+          </operator>
+          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.10.001" expanded="true" height="103" name="Decision Tree" width="90" x="313" y="34">
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="maximal_depth" value="10"/>
+            <parameter key="apply_pruning" value="false"/>
+            <parameter key="confidence" value="0.1"/>
+            <parameter key="apply_prepruning" value="false"/>
+            <parameter key="minimal_gain" value="0.01"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+          </operator>
+          <operator activated="true" class="logistic_regression" compatibility="9.10.001" expanded="true" height="103" name="Logistic Regression (SVM)" width="90" x="313" y="238">
+            <parameter key="kernel_type" value="dot"/>
+            <parameter key="kernel_gamma" value="1.0"/>
+            <parameter key="kernel_sigma1" value="1.0"/>
+            <parameter key="kernel_sigma2" value="0.0"/>
+            <parameter key="kernel_sigma3" value="2.0"/>
+            <parameter key="kernel_shift" value="1.0"/>
+            <parameter key="kernel_degree" value="2.0"/>
+            <parameter key="kernel_a" value="1.0"/>
+            <parameter key="kernel_b" value="0.0"/>
+            <parameter key="kernel_cache" value="200"/>
+            <parameter key="C" value="1.0"/>
+            <parameter key="convergence_epsilon" value="0.001"/>
+            <parameter key="max_iterations" value="100000"/>
+            <parameter key="scale" value="true"/>
+            <parameter key="calculate_weights" value="true"/>
+            <parameter key="return_optimization_performance" value="true"/>
+          </operator>
+          <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="9.10.001" expanded="true" height="103" name="Gradient Boosted Trees" width="90" x="313" y="544">
+            <parameter key="number_of_trees" value="50"/>
+            <parameter key="reproducible" value="false"/>
+            <parameter key="maximum_number_of_threads" value="4"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="maximal_depth" value="5"/>
+            <parameter key="min_rows" value="10.0"/>
+            <parameter key="min_split_improvement" value="1.0E-5"/>
+            <parameter key="number_of_bins" value="20"/>
+            <parameter key="learning_rate" value="0.01"/>
+            <parameter key="sample_rate" value="1.0"/>
+            <parameter key="distribution" value="AUTO"/>
+            <parameter key="early_stopping" value="false"/>
+            <parameter key="stopping_rounds" value="1"/>
+            <parameter key="stopping_metric" value="AUTO"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <list key="monotone_constraints"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+            <list key="expert_parameters"/>
+          </operator>
+          <connect from_port="train 1" to_op="Decision Tree" to_port="training set"/>
+          <connect from_port="train 2" to_op="Random Forest" to_port="training set"/>
+          <connect from_port="train 3" to_op="Deep Learning" to_port="training set"/>
+          <connect from_port="train 4" to_op="Naive Bayes" to_port="training set"/>
+          <connect from_port="train 5" to_op="Logistic Regression (SVM)" to_port="training set"/>
+          <connect from_port="train 6" to_op="Gradient Boosted Trees" to_port="training set"/>
+          <connect from_op="Random Forest" from_port="model" to_port="model 3"/>
+          <connect from_op="Deep Learning" from_port="model" to_port="model 5"/>
+          <connect from_op="Naive Bayes" from_port="model" to_port="model 4"/>
+          <connect from_op="Decision Tree" from_port="model" to_port="model 1"/>
+          <connect from_op="Logistic Regression (SVM)" from_port="model" to_port="model 2"/>
+          <connect from_op="Gradient Boosted Trees" from_port="model" to_port="model 6"/>
+          <portSpacing port="source_train 1" spacing="0"/>
+          <portSpacing port="source_train 2" spacing="0"/>
+          <portSpacing port="source_train 3" spacing="0"/>
+          <portSpacing port="source_train 4" spacing="0"/>
+          <portSpacing port="source_train 5" spacing="0"/>
+          <portSpacing port="source_train 6" spacing="0"/>
+          <portSpacing port="source_train 7" spacing="0"/>
+          <portSpacing port="sink_model 1" spacing="0"/>
+          <portSpacing port="sink_model 2" spacing="0"/>
+          <portSpacing port="sink_model 3" spacing="0"/>
+          <portSpacing port="sink_model 4" spacing="0"/>
+          <portSpacing port="sink_model 5" spacing="0"/>
+          <portSpacing port="sink_model 6" spacing="0"/>
+          <portSpacing port="sink_model 7" spacing="0"/>
+        </process>
+      </operator>
+      <connect from_op="Read CSV" from_port="output" to_op="Numerical to Binominal" to_port="example set input"/>
+      <connect from_op="Numerical to Binominal" from_port="example set output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Compare ROCs" to_port="example set"/>
+      <connect from_op="Compare ROCs" from_port="rocComparison" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
