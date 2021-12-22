@@ -12,7 +12,7 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="Read CSV" width="90" x="45" y="595">
+      <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="Read CSV" width="90" x="313" y="34">
         <parameter key="csv_file" value="C:\Users\olive\Desktop\AC\final_dataset.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
@@ -107,7 +107,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
-      <operator activated="true" class="numerical_to_binominal" compatibility="9.10.001" expanded="true" height="82" name="Numerical to Binominal" width="90" x="179" y="595">
+      <operator activated="true" class="numerical_to_binominal" compatibility="9.10.001" expanded="true" height="82" name="Numerical to Binominal" width="90" x="447" y="34">
         <parameter key="attribute_filter_type" value="single"/>
         <parameter key="attribute" value="status"/>
         <parameter key="attributes" value=""/>
@@ -123,14 +123,28 @@
         <parameter key="min" value="-1.0"/>
         <parameter key="max" value="0.0"/>
       </operator>
-      <operator activated="true" class="set_role" compatibility="9.10.001" expanded="true" height="82" name="Set Role" width="90" x="313" y="544">
+      <operator activated="true" class="set_role" compatibility="9.10.001" expanded="true" height="82" name="Set Role" width="90" x="581" y="34">
         <parameter key="attribute_name" value="status"/>
         <parameter key="target_role" value="label"/>
         <list key="set_additional_roles">
           <parameter key="loan_id" value="id"/>
         </list>
       </operator>
-      <operator activated="true" class="concurrency:optimize_parameters_grid" compatibility="8.2.000" expanded="true" height="124" name="Optimize Parameters (Grid)" origin="GENERATED_TEMPLATE" width="90" x="514" y="442">
+      <operator activated="true" class="select_attributes" compatibility="9.10.001" expanded="true" height="82" name="Select Attributes (2)" width="90" x="715" y="34">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="account_district_95_crimes|account_age|account_district_95_unemp|account_district_96_crimes|account_district_96_unemp|account_district_average_salary|account_district_cities|account_district_entrepren|account_district_habitants|account_district_inhab_ration|account_district_mun_higher_10000|account_district_mun_under_499|account_district_mun_under_1999|account_district_mun_under_9999|age|amount|balance_on_request|balance_to_loan_ratio|card_type|client_district_95_crimes|client_district_95_unemp|client_district_96_crimes|client_district_96_unemp|client_district_average_salary|client_district_cities|client_district_entrepren|client_district_habitants|client_district_inhab_ration|client_district_mun_higher_10000|client_district_mun_under_499|client_district_mun_under_1999|client_district_mun_under_9999|credit amount max|credit amount mean|credit amount min|credit amount std|credit balance max|credit balance mean|credit balance min|credit count|duration|frequency|gender|loan_date|loan_id|loan_month|loan_year|OPERATION A amount mean|OPERATION A count|OPERATION B amount mean|OPERATION B count|OPERATION C amount mean|OPERATION C count|OPERATION D amount mean|OPERATION D count|OPERATION E amount mean|OPERATION E count|OPERATION F amount mean|OPERATION F count|payments|status|withdrawal amount max|withdrawal amount mean|withdrawal amount min|withdrawal amount std|withdrawal balance max|withdrawal balance mean|withdrawal balance min|withdrawal count"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="concurrency:optimize_parameters_grid" compatibility="8.2.000" expanded="true" height="124" name="Optimize Parameters (Grid)" origin="GENERATED_TEMPLATE" width="90" x="849" y="34">
         <list key="parameters">
           <parameter key="Random Forest (2).number_of_trees" value="[50 ;500;10;linear]"/>
           <parameter key="SMOTE Upsampling.upsampling_size" value="[0;40;10;quadratic]"/>
@@ -375,7 +389,8 @@
       </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Numerical to Binominal" to_port="example set input"/>
       <connect from_op="Numerical to Binominal" from_port="example set output" to_op="Set Role" to_port="example set input"/>
-      <connect from_op="Set Role" from_port="example set output" to_op="Optimize Parameters (Grid)" to_port="input 1"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Select Attributes (2)" to_port="example set input"/>
+      <connect from_op="Select Attributes (2)" from_port="example set output" to_op="Optimize Parameters (Grid)" to_port="input 1"/>
       <connect from_op="Optimize Parameters (Grid)" from_port="performance" to_port="result 2"/>
       <connect from_op="Optimize Parameters (Grid)" from_port="model" to_op="Apply Model" to_port="model"/>
       <connect from_op="Optimize Parameters (Grid)" from_port="parameter set" to_port="result 3"/>
