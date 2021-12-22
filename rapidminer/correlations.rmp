@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.10.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.10.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="Read CSV" width="90" x="112" y="289">
+        <parameter key="csv_file" value="C:\Users\olive\Desktop\AC\final_dataset.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="age.true.integer.attribute"/>
+          <parameter key="1" value="gender.true.integer.attribute"/>
+          <parameter key="2" value="frequency.true.integer.attribute"/>
+          <parameter key="3" value="account_age.true.integer.attribute"/>
+          <parameter key="4" value="card_type.true.integer.attribute"/>
+          <parameter key="5" value="loan_id.true.integer.attribute"/>
+          <parameter key="6" value="loan_date.true.date.attribute"/>
+          <parameter key="7" value="amount.true.integer.attribute"/>
+          <parameter key="8" value="duration.true.integer.attribute"/>
+          <parameter key="9" value="payments.true.integer.attribute"/>
+          <parameter key="10" value="status.true.integer.attribute"/>
+          <parameter key="11" value="loan_year.true.integer.attribute"/>
+          <parameter key="12" value="loan_month.true.integer.attribute"/>
+          <parameter key="13" value="client_district_habitants.true.integer.attribute"/>
+          <parameter key="14" value="client_district_mun_under_499.true.integer.attribute"/>
+          <parameter key="15" value="client_district_mun_under_1999.true.integer.attribute"/>
+          <parameter key="16" value="client_district_mun_under_9999.true.integer.attribute"/>
+          <parameter key="17" value="client_district_mun_higher_10000.true.integer.attribute"/>
+          <parameter key="18" value="client_district_cities.true.integer.attribute"/>
+          <parameter key="19" value="client_district_inhab_ration.true.real.attribute"/>
+          <parameter key="20" value="client_district_average_salary.true.integer.attribute"/>
+          <parameter key="21" value="client_district_95_unemp.true.real.attribute"/>
+          <parameter key="22" value="client_district_96_unemp.true.real.attribute"/>
+          <parameter key="23" value="client_district_entrepren.true.integer.attribute"/>
+          <parameter key="24" value="client_district_95_crimes.true.integer.attribute"/>
+          <parameter key="25" value="client_district_96_crimes.true.integer.attribute"/>
+          <parameter key="26" value="account_district_habitants.true.integer.attribute"/>
+          <parameter key="27" value="account_district_mun_under_499.true.integer.attribute"/>
+          <parameter key="28" value="account_district_mun_under_1999.true.integer.attribute"/>
+          <parameter key="29" value="account_district_mun_under_9999.true.integer.attribute"/>
+          <parameter key="30" value="account_district_mun_higher_10000.true.integer.attribute"/>
+          <parameter key="31" value="account_district_cities.true.integer.attribute"/>
+          <parameter key="32" value="account_district_inhab_ration.true.real.attribute"/>
+          <parameter key="33" value="account_district_average_salary.true.integer.attribute"/>
+          <parameter key="34" value="account_district_95_unemp.true.real.attribute"/>
+          <parameter key="35" value="account_district_96_unemp.true.real.attribute"/>
+          <parameter key="36" value="account_district_entrepren.true.integer.attribute"/>
+          <parameter key="37" value="account_district_95_crimes.true.integer.attribute"/>
+          <parameter key="38" value="account_district_96_crimes.true.integer.attribute"/>
+          <parameter key="39" value="credit count.true.integer.attribute"/>
+          <parameter key="40" value="credit balance mean.true.real.attribute"/>
+          <parameter key="41" value="credit balance min.true.real.attribute"/>
+          <parameter key="42" value="credit balance max.true.real.attribute"/>
+          <parameter key="43" value="credit amount mean.true.real.attribute"/>
+          <parameter key="44" value="credit amount min.true.real.attribute"/>
+          <parameter key="45" value="credit amount max.true.real.attribute"/>
+          <parameter key="46" value="credit amount std.true.real.attribute"/>
+          <parameter key="47" value="withdrawal count.true.real.attribute"/>
+          <parameter key="48" value="withdrawal balance mean.true.real.attribute"/>
+          <parameter key="49" value="withdrawal balance min.true.real.attribute"/>
+          <parameter key="50" value="withdrawal balance max.true.real.attribute"/>
+          <parameter key="51" value="withdrawal amount mean.true.real.attribute"/>
+          <parameter key="52" value="withdrawal amount min.true.real.attribute"/>
+          <parameter key="53" value="withdrawal amount max.true.real.attribute"/>
+          <parameter key="54" value="withdrawal amount std.true.real.attribute"/>
+          <parameter key="55" value="OPERATION A amount mean.true.real.attribute"/>
+          <parameter key="56" value="OPERATION A count.true.integer.attribute"/>
+          <parameter key="57" value="OPERATION B amount mean.true.real.attribute"/>
+          <parameter key="58" value="OPERATION B count.true.real.attribute"/>
+          <parameter key="59" value="OPERATION C amount mean.true.real.attribute"/>
+          <parameter key="60" value="OPERATION C count.true.real.attribute"/>
+          <parameter key="61" value="OPERATION D amount mean.true.real.attribute"/>
+          <parameter key="62" value="OPERATION D count.true.real.attribute"/>
+          <parameter key="63" value="OPERATION E amount mean.true.real.attribute"/>
+          <parameter key="64" value="OPERATION E count.true.real.attribute"/>
+          <parameter key="65" value="OPERATION F amount mean.true.real.attribute"/>
+          <parameter key="66" value="OPERATION F count.true.real.attribute"/>
+          <parameter key="67" value="balance_to_loan_ratio.true.real.attribute"/>
+          <parameter key="68" value="balance_on_request.true.real.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="numerical_to_binominal" compatibility="9.10.001" expanded="true" height="82" name="Numerical to Binominal" width="90" x="246" y="289">
+        <parameter key="attribute_filter_type" value="single"/>
+        <parameter key="attribute" value="status"/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="numeric"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="real"/>
+        <parameter key="block_type" value="value_series"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_series_end"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="min" value="-1.0"/>
+        <parameter key="max" value="0.0"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.10.001" expanded="true" height="82" name="Set Role" width="90" x="380" y="289">
+        <parameter key="attribute_name" value="status"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles">
+          <parameter key="loan_id" value="id"/>
+        </list>
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="9.10.001" expanded="true" height="82" name="Select Attributes (2)" width="90" x="514" y="289">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="account_district_95_crimes|account_age|account_district_95_unemp|account_district_96_crimes|account_district_96_unemp|account_district_average_salary|account_district_cities|account_district_entrepren|account_district_habitants|account_district_inhab_ration|account_district_mun_higher_10000|account_district_mun_under_499|account_district_mun_under_1999|account_district_mun_under_9999|age|amount|balance_on_request|balance_to_loan_ratio|card_type|client_district_95_crimes|client_district_95_unemp|client_district_96_crimes|client_district_96_unemp|client_district_average_salary|client_district_cities|client_district_entrepren|client_district_habitants|client_district_inhab_ration|client_district_mun_higher_10000|client_district_mun_under_499|client_district_mun_under_1999|client_district_mun_under_9999|credit amount max|credit amount mean|credit amount min|credit amount std|credit balance max|credit balance mean|credit balance min|credit count|duration|frequency|gender|loan_date|loan_id|loan_month|loan_year|OPERATION A amount mean|OPERATION A count|OPERATION B amount mean|OPERATION B count|OPERATION C amount mean|OPERATION C count|OPERATION D amount mean|OPERATION D count|OPERATION E amount mean|OPERATION E count|OPERATION F amount mean|OPERATION F count|payments|status|withdrawal amount max|withdrawal amount mean|withdrawal amount min|withdrawal amount std|withdrawal balance max|withdrawal balance mean|withdrawal balance min|withdrawal count"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="concurrency:correlation_matrix" compatibility="9.10.001" expanded="true" height="103" name="Correlation Matrix" width="90" x="715" y="289">
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="normalize_weights" value="true"/>
+        <parameter key="squared_correlation" value="false"/>
+      </operator>
+      <connect from_op="Read CSV" from_port="output" to_op="Numerical to Binominal" to_port="example set input"/>
+      <connect from_op="Numerical to Binominal" from_port="example set output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Select Attributes (2)" to_port="example set input"/>
+      <connect from_op="Select Attributes (2)" from_port="example set output" to_op="Correlation Matrix" to_port="example set"/>
+      <connect from_op="Correlation Matrix" from_port="matrix" to_port="result 1"/>
+      <connect from_op="Correlation Matrix" from_port="weights" to_port="result 2"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
